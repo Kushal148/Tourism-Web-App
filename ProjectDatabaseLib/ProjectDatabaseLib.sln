@@ -7,10 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectDatabaseLib", "Proje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TourismMVCWebsite", "..\TourismMVCWebsite\TourismMVCWebsite.csproj", "{C5F48A70-D2C3-4690-A032-1CCCA63E71C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testdal", "..\Testdal\Testdal.csproj", "{F87A706C-68D5-4485-9C33-A9786655A2FC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poc", "..\Poc\Poc.csproj", "{7AFFAAC6-3662-40B2-B6B6-779CBDDF7BC7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,14 +21,6 @@ Global
 		{C5F48A70-D2C3-4690-A032-1CCCA63E71C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5F48A70-D2C3-4690-A032-1CCCA63E71C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5F48A70-D2C3-4690-A032-1CCCA63E71C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F87A706C-68D5-4485-9C33-A9786655A2FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F87A706C-68D5-4485-9C33-A9786655A2FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F87A706C-68D5-4485-9C33-A9786655A2FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F87A706C-68D5-4485-9C33-A9786655A2FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7AFFAAC6-3662-40B2-B6B6-779CBDDF7BC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AFFAAC6-3662-40B2-B6B6-779CBDDF7BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7AFFAAC6-3662-40B2-B6B6-779CBDDF7BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7AFFAAC6-3662-40B2-B6B6-779CBDDF7BC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,12 @@
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\ProjectDatabaseLib\bin\Debug\ProjectDatabaseLib.dll.config
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\ProjectDatabaseLib\bin\Debug\ProjectDatabaseLib.dll
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\ProjectDatabaseLib\bin\Debug\ProjectDatabaseLib.pdb
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\ProjectDatabaseLib\bin\Debug\EntityFramework.dll
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\ProjectDatabaseLib\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\ProjectDatabaseLib\bin\Debug\EntityFramework.xml
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\ProjectDatabaseLib\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\ProjectDatabaseLib\obj\Debug\ProjectDatabaseLib.csprojAssemblyReference.cache
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\ProjectDatabaseLib\obj\Debug\ProjectDatabaseLib.csproj.CoreCompileInputs.cache
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\ProjectDatabaseLib\obj\Debug\ProjectDatabaseLib.csproj.CopyComplete
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\ProjectDatabaseLib\obj\Debug\ProjectDatabaseLib.dll
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\ProjectDatabaseLib\obj\Debug\ProjectDatabaseLib.pdb

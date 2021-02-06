@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TourismWebsiteDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BlogSpace">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LocationId" Type="Int32" Nullable="false" />
+    <Property Name="Isactive" Type="Boolean" />
+    <Property Name="Createdby" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_dbo_BlogSpaces_dbo_Locations_LocationId" FromRole="BlogSpaces" ToRole="Locations" />
+    <NavigationProperty Name="User" Relationship="Self.FK_dbo_BlogSpaces_dbo_Users_Createdby" FromRole="BlogSpaces" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LocationId" Type="Int32" Nullable="false" />
+    <Property Name="HotelName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Hoteltype" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_dbo_Hotels_dbo_Locations_LocationId" FromRole="Hotels" ToRole="Locations" />
+    <Property Name="hotelImage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pincode" Type="Int32" Nullable="false" />
+    <Property Name="LocationName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Longitude" Type="Double" Nullable="false" />
+    <Property Name="Latitude" Type="Double" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="BlogSpaces" Relationship="Self.FK_dbo_BlogSpaces_dbo_Locations_LocationId" FromRole="Locations" ToRole="BlogSpaces" />
+    <NavigationProperty Name="Hotels" Relationship="Self.FK_dbo_Hotels_dbo_Locations_LocationId" FromRole="Locations" ToRole="Hotels" />
+    <NavigationProperty Name="TouristPlaces" Relationship="Self.FK_dbo_TouristPlaces_dbo_Locations_LocationId" FromRole="Locations" ToRole="TouristPlaces" />
+    <NavigationProperty Name="Flights" Relationship="TourismWebsiteDBModel.FK__Flights__Locatio__628FA481" FromRole="Location" ToRole="Flight" />
+  </EntityType>
+  <EntityType Name="TouristPlace">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LocationId" Type="Int32" Nullable="false" />
+    <Property Name="PlaceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Ratings" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Location" Relationship="Self.FK_dbo_TouristPlaces_dbo_Locations_LocationId" FromRole="TouristPlaces" ToRole="Locations" />
+    <NavigationProperty Name="TouristPlaces1" Relationship="TourismWebsiteDBModel.FK_TouristPlaces_TouristPlaces" FromRole="TouristPlace" ToRole="TouristPlace1" />
+    <NavigationProperty Name="TouristPlace1" Relationship="TourismWebsiteDBModel.FK_TouristPlaces_TouristPlaces" FromRole="TouristPlace1" ToRole="TouristPlace" />
+  </EntityType>
+  <EntityType Name="UserReview">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Rating" Type="Int32" Nullable="false" />
+    <Property Name="Isactive" Type="Boolean" />
+    <Property Name="Createdby" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_dbo_UserReviews_dbo_Users_Createdby" FromRole="UserReviews" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Isactive" Type="Boolean" />
+    <Property Name="Isadmin" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BlogSpaces" Relationship="Self.FK_dbo_BlogSpaces_dbo_Users_Createdby" FromRole="Users" ToRole="BlogSpaces" />
+    <NavigationProperty Name="UserReviews" Relationship="Self.FK_dbo_UserReviews_dbo_Users_Createdby" FromRole="Users" ToRole="UserReviews" />
+  </EntityType>
+  <Association Name="FK_dbo_BlogSpaces_dbo_Locations_LocationId">
+    <End Role="Locations" Type="Self.Location" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BlogSpaces" Type="Self.BlogSpace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BlogSpaces">
+        <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_BlogSpaces_dbo_Users_Createdby">
+    <End Role="Users" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="BlogSpaces" Type="Self.BlogSpace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="BlogSpaces">
+        <PropertyRef Name="Createdby" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Hotels_dbo_Locations_LocationId">
+    <End Role="Locations" Type="Self.Location" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Hotels" Type="Self.Hotel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Hotels">
+        <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TouristPlaces_dbo_Locations_LocationId">
+    <End Role="Locations" Type="Self.Location" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="TouristPlaces" Type="Self.TouristPlace" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TouristPlaces">
+        <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserReviews_dbo_Users_Createdby">
+    <End Role="Users" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserReviews" Type="Self.UserReview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserReviews">
+        <PropertyRef Name="Createdby" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TourismWebsiteDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BlogSpaces" EntityType="Self.BlogSpace" />
+    <EntitySet Name="Hotels" EntityType="Self.Hotel" />
+    <EntitySet Name="Locations" EntityType="Self.Location" />
+    <EntitySet Name="TouristPlaces" EntityType="Self.TouristPlace" />
+    <EntitySet Name="UserReviews" EntityType="Self.UserReview" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_dbo_BlogSpaces_dbo_Locations_LocationId" Association="Self.FK_dbo_BlogSpaces_dbo_Locations_LocationId">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="BlogSpaces" EntitySet="BlogSpaces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_BlogSpaces_dbo_Users_Createdby" Association="Self.FK_dbo_BlogSpaces_dbo_Users_Createdby">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BlogSpaces" EntitySet="BlogSpaces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Hotels_dbo_Locations_LocationId" Association="Self.FK_dbo_Hotels_dbo_Locations_LocationId">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="Hotels" EntitySet="Hotels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TouristPlaces_dbo_Locations_LocationId" Association="Self.FK_dbo_TouristPlaces_dbo_Locations_LocationId">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="TouristPlaces" EntitySet="TouristPlaces" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserReviews_dbo_Users_Createdby" Association="Self.FK_dbo_UserReviews_dbo_Users_Createdby">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserReviews" EntitySet="UserReviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TouristPlaces_TouristPlaces" Association="TourismWebsiteDBModel.FK_TouristPlaces_TouristPlaces">
+      <End Role="TouristPlace" EntitySet="TouristPlaces" />
+      <End Role="TouristPlace1" EntitySet="TouristPlaces" />
+    </AssociationSet>
+    <EntitySet Name="Packages" EntityType="TourismWebsiteDBModel.Package" />
+    <EntitySet Name="BlogSpace1" EntityType="TourismWebsiteDBModel.BlogSpace1" />
+    <EntitySet Name="Flights" EntityType="TourismWebsiteDBModel.Flight" />
+    <AssociationSet Name="FK__Flights__Locatio__628FA481" Association="TourismWebsiteDBModel.FK__Flights__Locatio__628FA481">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Flight" EntitySet="Flights" />
+    </AssociationSet>
+    <EntitySet Name="Memberships" EntityType="TourismWebsiteDBModel.Membership" />
+  </EntityContainer>
+  <Association Name="FK_TouristPlaces_TouristPlaces">
+    <End Type="TourismWebsiteDBModel.TouristPlace" Role="TouristPlace" Multiplicity="1" />
+    <End Type="TourismWebsiteDBModel.TouristPlace" Role="TouristPlace1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TouristPlace">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TouristPlace1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="PackageId" />
+    </Key>
+    <Property Name="PackageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlaceName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoOfDays" Type="Int32" />
+    <Property Name="NoOfNights" Type="Int32" />
+    <Property Name="NoOfPerson" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BlogSpace1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Outline" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Flight">
+    <Key>
+      <PropertyRef Name="F_Id" />
+    </Key>
+    <Property Name="F_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="F_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Start_From" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Destination" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Departure_Date" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Departure_Time" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LocationId" Type="Int32" />
+    <NavigationProperty Name="Location" Relationship="TourismWebsiteDBModel.FK__Flights__Locatio__628FA481" FromRole="Flight" ToRole="Location" />
+  </EntityType>
+  <Association Name="FK__Flights__Locatio__628FA481">
+    <End Type="TourismWebsiteDBModel.Location" Role="Location" Multiplicity="0..1" />
+    <End Type="TourismWebsiteDBModel.Flight" Role="Flight" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Flight">
+        <PropertyRef Name="LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Membership">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

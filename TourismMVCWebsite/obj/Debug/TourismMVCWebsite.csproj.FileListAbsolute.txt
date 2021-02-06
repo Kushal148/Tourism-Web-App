@@ -1,0 +1,2 @@
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\TourismMVCWebsite\obj\Debug\TourismMVCWebsite.csprojAssemblyReference.cache
+C:\Users\om\Source\Repos\Kushal148\Tourism-Web-App\TourismMVCWebsite\obj\Debug\TourismMVCWebsite.csproj.CoreCompileInputs.cache

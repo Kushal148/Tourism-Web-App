@@ -314,10 +314,6 @@
       <Project>{8e83add9-d8d4-4123-9132-28de82e7490c}</Project>
       <Name>ProjectDatabaseLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Testdal\Testdal.csproj">
-      <Project>{f87a706c-68d5-4485-9c33-a9786655a2fc}</Project>
-      <Name>Testdal</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
