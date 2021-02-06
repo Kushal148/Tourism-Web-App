@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="444fab0106f6413ea2d33416b7581d14" Name="Diagram1">
+        <EntityTypeShape EntityType="TourismWebsiteDBModel.BlogSpace" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismWebsiteDBModel.Hotel" Width="1.5" PointX="5.625" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismWebsiteDBModel.Location" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismWebsiteDBModel.TouristPlace" Width="1.5" PointX="3.125" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismWebsiteDBModel.UserReview" Width="1.5" PointX="7.625" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TourismWebsiteDBModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="TourismWebsiteDBModel.FK_dbo_BlogSpaces_dbo_Locations_LocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismWebsiteDBModel.FK_dbo_BlogSpaces_dbo_Users_Createdby" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismWebsiteDBModel.FK_dbo_Hotels_dbo_Locations_LocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismWebsiteDBModel.FK_dbo_TouristPlaces_dbo_Locations_LocationId" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismWebsiteDBModel.FK_dbo_UserReviews_dbo_Users_Createdby" ManuallyRouted="false" />
+        <AssociationConnector Association="TourismWebsiteDBModel.FK_TouristPlaces_TouristPlaces" />
+        <EntityTypeShape EntityType="TourismWebsiteDBModel.Package" Width="1.5" PointX="8.125" PointY="1.625" />
+        <EntityTypeShape EntityType="TourismWebsiteDBModel.BlogSpace1" Width="1.5" PointX="3.75" PointY="0.5" />
+        <EntityTypeShape EntityType="TourismWebsiteDBModel.Flight" Width="1.5" PointX="3" PointY="10.125" />
+        <AssociationConnector Association="TourismWebsiteDBModel.FK__Flights__Locatio__628FA481" />
+        <EntityTypeShape EntityType="TourismWebsiteDBModel.Membership" Width="1.5" PointX="10.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
