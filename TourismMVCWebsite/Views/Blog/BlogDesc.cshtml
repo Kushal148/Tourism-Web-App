@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProjectDatabaseLib.BlogSpace1>
+
+@{
+    ViewBag.Title = "BlogDesc";
+    
+}
+<head>
+    <style>
+        body {
+            background-image: url('~/Content/assets/awp.png');
+            background-repeat:repeat;
+            background-size: cover;
+            background-color:aliceblue;
+        }
+    </style>
+</head>
+
+<h2 style="color:hotpink; font-family:'Times New Roman', Times, serif; font-size:50px; text-shadow: 3px 3px black;text-align:center; ">All Articles</h2>
+
+
+<div class="container">
+    <br />
+    <br />
+
+    <table class="table">
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <p style="font-family:'Times New Roman', Times, serif; color : blue; font-size:20px; text-decoration:underline;"><b>@Html.DisplayFor(modelItem => item.Title)</b></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p style="font-family: 'Times New Roman', Times, serif;color : black; font-size:25px;background-color:antiquewhite; text-align:justify;"><b>@Html.DisplayFor(modelItem => item.Description)</b></p>
+                </td>
+
+            </tr>
+        }
+
+    </table>
+
+</div>

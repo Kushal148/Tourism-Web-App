@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ProjectDatabaseLib.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+
+
+<div class="container">
+    <h2 style="text-align:center">List Of Users</h2>
+    <br />
+    
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+
+            @*@Html.DisplayNameFor(model => model.Password)*@
+
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNumber)
+            </th>
+            <th>
+                Options
+            </th>
+
+            @*@Html.DisplayNameFor(model => model.Isactive)*@
+
+
+            @*@Html.DisplayNameFor(model => model.Isadmin)*@
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNumber)
+                </td>
+
+                @*@Html.DisplayFor(modelItem => item.Isactive)*@
+
+
+                @*@Html.DisplayFor(modelItem => item.Isadmin)*@
+
+                <td>
+                    @*<button class="btn btn-sm btn-success"  type="submit"> @Html.ActionLink("Edit", "Edit", new { id = item.UserId })</button>*@
+                    <button class="btn btn-sm btn-info" type="submit"> @Html.ActionLink("Details", "Details",new { id = item.UserId }) </button>
+                    <button class="btn btn-sm btn-danger" type="submit"> @Html.ActionLink("Delete", "Delete",new { id = item.UserId })</button>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

@@ -1,0 +1,71 @@
+﻿@model ProjectDatabaseLib.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+
+
+    <h2>Details</h2>
+
+    <div>
+        
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.UserName)<span>--</span>
+                @Html.DisplayFor(model => model.UserName)
+            </dt>
+
+          
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City) <span>--</span>
+            @Html.DisplayFor(model => model.City)
+        </dt>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailId)<span>--</span>
+            @Html.DisplayFor(model => model.EmailId)
+        </dt>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactNumber) <span>--</span>@Html.DisplayFor(model => model.ContactNumber)
+        </dt>
+
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.Isactive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Isactive)
+            </dd>*@
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.Isadmin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Isadmin)
+            </dd>*@
+
+        </dl>
+    </div>
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.UserId })*@ 
+        @Html.ActionLink("Back to List", "Index",null,new { @class = "btn btn-primary" })
+    </p>
+
+</div>

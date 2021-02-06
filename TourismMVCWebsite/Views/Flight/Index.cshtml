@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ProjectDatabaseLib.Flight>
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml"; }
+
+<h2 style="margin-top:30px;font-family:'Monotype Corsiva'; color:hotpink;font-size:50px;text-align:center;text-shadow:5px 3px 2px #040475">Your Travel Flight Details</h2>
+
+
+@using (Html.BeginForm())
+
+{<div style="position: relative;
+        margin-top: 40px;
+        margin-left:5px;
+        text-align:center;
+        box-sizing:border-box;">
+
+        <p>
+            <b style="font-family:'Times New Roman', Times, serif; font-size:25px; color:#040475;">Flight Name : </b><input style="border-radius:15px;" type="text" id="MyId" name="Id" />
+            <input style="border-radius: 15px;
+        background-image: linear-gradient(#00ff7e, #1f3d90);
+        border: 0 !important;
+        color: #fff !important;
+        padding: 5px 20px !important;" type="submit" value="search" />
+        </p>
+
+
+
+    </div> foreach (var item in Model)
+    {
+<!--<div class="container" style="margin-top:50px">
+    <div class="row"></div>
+    <div class="card" style="width: 50%; margin-left: 25%; margin-right: 25%;">
+
+        <div class=" col">
+            <h5 style="color:hotpink; font-family:'Times New Roman', Times, serif"> @Html.DisplayFor(modelItem => item.F_Name)</h5>
+            <h6 style=" float:right;">Start From:  @Html.DisplayFor(modelItem => item.Start_From) </h6>
+            <h6>Destination: @Html.DisplayFor(modelItem => item.Destination) </h6>
+            <h6 style="float:right; color:blue; display:block">Date:  @Html.DisplayFor(modelItem => item.Departure_Date) </h6>
+            <h6 style=" color:blue;display:block">Time:  @Html.DisplayFor(modelItem => item.Departure_Time) </h6>--> @*<a href="#" class="btn btn-primary">Go somewhere</a>*@
+                                <!--</div>
+                                    </div>
+                                </div>-->
+                                                    <div class="container" style="margin-top:30px;">
+                                                        <div class="row"></div>
+                                                        <div class="card" style="width: 100%; height:30%; padding: 10px; ">
+
+                                                            <div class=" col">
+                                                                <h5 style="color:hotpink; font-family:'Times New Roman', Times, serif; text-align:center; font-family:'Times New Roman', Times, serif; font-size:30px;"> @Html.DisplayFor(modelItem => item.F_Name)</h5>
+                                                                <h6 style=" float:right;">Start From:  @Html.DisplayFor(modelItem => item.Start_From) </h6>
+                                                                <h6>Destination: @Html.DisplayFor(modelItem => item.Destination) </h6>
+                                                                <h6 style="float:right; margin:10px;color:blue; display:block">Date:  @Html.DisplayFor(modelItem => item.Departure_Date) </h6>
+                                                                <h6 style=" color:blue;display:block;margin:10px;">Time:  @Html.DisplayFor(modelItem => item.Departure_Time) </h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>}
+
+                                            }

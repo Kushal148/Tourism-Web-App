@@ -1,0 +1,108 @@
+﻿@model TourismMVCWebsite.Models.Membership
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+
+}
+
+<html>
+<head>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href=@Url.Content("/Content/assets/css/loginformcss2.css")>
+
+</head>
+<body>
+    <div class="login-wrap">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+           
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Log In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
+            
+            <div class="login-form">
+                
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <div>@Html.ValidationSummary(true, "", new { @class = "text-danger" })</div>
+                        <label for="user" class="label">Username</label>
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "input" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                        @*<input id="user" type="text" class="input">*@
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "input" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        @*input id="pass" type="password" class="input" data-type="password">*@
+                    </div>
+
+                    <div class="group">
+                        <input type="submit" class="button" value="Log In">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a href="/Account/Signup">SignUp</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        }
+    </div>
+</body>
+
+
+
+
+
+
+
+@*
+
+
+
+    @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Membership</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>*@
+
+
+
+

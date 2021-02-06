@@ -1,0 +1,51 @@
+﻿@model ProjectDatabaseLib.Package
+
+@{
+    ViewBag.Title = "ViewDetails";
+    Layout = "~/Views/Shared/_CommonNavUserLayout.cshtml";
+}
+
+
+
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container py-2">
+            <h2 class="title">@Html.DisplayFor(model => model.PlaceName)</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="#url">Home</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> @Html.DisplayFor(model => model.PlaceName) </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="w3l-cta4 py-5">
+    <div class="container py-lg-5">
+        <div class="ab-section text-center">
+            <h6 class="sub-title">Tour Package</h6>
+            <h3 class="hny-title">@Html.DisplayFor(model => model.PlaceName)</h3>
+            <p class="py-3 mb-3">
+                @Html.DisplayFor(model => model.Description)
+                <h4 style="color:orangered">Duration- @Html.DisplayFor(model => model.NoOfDays) Days, @Html.DisplayFor(model => model.NoOfNights) Nights</h4><br />
+                <h4 style="color:black">Person- @Html.DisplayFor(model => model.NoOfPerson)</h4><br />
+                <h4 style="color:orangered">Starts from- &#8377;@Html.DisplayFor(model => model.Price) </h4>
+
+            </p>
+
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-9 mx-auto">
+                <img src="@Url.Content(Model.Image)" class="img-fluid" alt="">
+            </div>
+
+        </div>
+        <br />
+        <div class="ab-section text-center">
+            @*<a href="/User/Booking" class="btn btn-style btn-primary" id="PackageId" name="PackageId">Read More</a>*@
+            <button class="btn btn-style btn-primary" style="align-items:center;color:white;" type="submit">@Html.ActionLink("Book Nowww", "Booking", new { id = Model.PackageId })</button>
+        </div>
+
+    </div>
+</section>
+
+

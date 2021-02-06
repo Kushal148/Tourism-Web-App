@@ -1,0 +1,77 @@
+﻿@model ProjectDatabaseLib.BlogSpace1
+
+@{
+    ViewBag.Title = "Uploadblog";
+
+
+}
+
+<h2 style="color:hotpink">Add New Blog Details</h2>
+<hr />
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })*@
+                <select name="@Html.NameFor(model => model.Category)">
+                    <option value="" selected disabled>--Select Blog Category--</option>
+                    <option>Destination</option>
+                    <option>Travel Experience</option>
+                    <option>Miscellaneous</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Outline, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Outline, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Outline, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })*@
+                <textarea name="@Html.NameFor(model => model.Description)" cols=50 rows=5 style="overflow:scroll;">Enter Complete Article Content</textarea>
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input style="background-color:blueviolet; font-family:'Times New Roman', Times, serif; font-size:large; color:beige" type="submit" value="Add Blog" class="btn btn-default" />
+            </div>
+        </div>
+        <h4>@ViewBag.message</h4>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Blog List", "UserBlogs")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

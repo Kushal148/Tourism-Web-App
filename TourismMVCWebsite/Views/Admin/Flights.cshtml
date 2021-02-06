@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ProjectDatabaseLib.Flight>
+
+@{
+    ViewBag.Title = "Flights";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <h2 style="margin-top:69px; text-align:center; color:blue;font-family:'Monotype Corsiva';font-size:50px;text-shadow:5px 2px 1px #00ff7e">Your Travel Flight Details</h2>
+
+    <p style="margin-top:40px;margin-right:25px; float:right; ">
+        <b>New Flight Details : </b> @Html.ActionLink("ADD FLIGHT", "NewFlight", "Admin", null, new { @class = "btn btn-info btn-large" })
+    </p>
+    @using (Html.BeginForm())
+
+    {<div style="position: relative;
+        margin-top: 40px;
+        margin-left:20px;
+
+        box-sizing:border-box;">
+
+            <p>
+                <b>Flight Name : </b><input style="border-radius:15px;" type="text" id="MyId" name="F_Id" />
+                <input style="        border-radius: 15px;
+        background-image: linear-gradient(#00ff7e, #1f3d90);
+        border: 0 !important;
+        color: #fff !important;
+        padding: 5px 20px !important;" type="submit" value="search" />
+            </p>
+
+
+
+        </div>
+        foreach (var item in Model)
+        {
+
+            <div class="container" style="margin-top:20px">
+                <div class="row"></div>
+                <div class="card" style="width: 50%; height:30%;margin-left: 25%; margin-right: 25%;">
+
+                    <div class=" col-sm">
+                        <h5 style="color:hotpink; font-family:'Times New Roman', Times, serif; text-align:center; font-family:'Times New Roman', Times, serif; font-size:30px;"> @Html.DisplayFor(modelItem => item.F_Name)</h5>
+                        <h6 style=" float:right;">Start From:  @Html.DisplayFor(modelItem => item.Start_From) </h6>
+                        <h6>Destination: @Html.DisplayFor(modelItem => item.Destination) </h6>
+                        <h6 style="float:right; color:blue; display:block;margin:10px;">Date:  @Html.DisplayFor(modelItem => item.Departure_Date) </h6>
+                        <h6 style=" color:blue;display:block;margin:10px;">Time:  @Html.DisplayFor(modelItem => item.Departure_Time) </h6>
+                        @*<button class="btn btn-light" type="submit">@Html.ActionLink("Add", "NewFlight", new { id = item.F_Id })</button>*@
+
+
+                        <button class="btn btn-sm btn-outline-info" type="submit"><b>@Html.ActionLink("Edit", "FlightUpdate", new { Id = item.F_Id })</b></button>
+
+                        <button style="float:right;" class="btn btn-sm btn-outline-info" type="submit"><b>@Html.ActionLink("Delete", "FlightDelete", new { F_Id = item.F_Id }, new { onclick = "return confirm('Are you sure? want to delete?');" })</b></button>
+
+                    </div>
+                </div>
+            </div>
+        }
+    }
+

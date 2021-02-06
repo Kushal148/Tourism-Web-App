@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <title>@Page.Title</title>
+    @RenderSection("head", required: false)
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Traversal </title>
+    <!-- google fonts -->
+    <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
+    <!-- google fonts -->
+    <!-- Template CSS -->
+    <link rel="stylesheet" href=@Url.Content("/Content/assets/css/style-starter.css")>
+    <!-- Template CSS -->
+</head>
+<body>
+    <header id="site-header" class="fixed-top">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg stroke">
+                <h1>
+                    <a class="navbar-brand mr-lg-5" href="index.html">
+                        Tourism
+                    </a>
+                </h1>
+
+                <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+                        data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                    <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/User/Index">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/About">About</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">
+                                Destinations
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/User/Destination">Rajasthan</a>
+                                <a class="dropdown-item" href="/User/Destination2">Goa</a>
+                                <a class="dropdown-item" href="/User/Destination3">Kerla</a>
+                                <a class="dropdown-item" href="/User/Destination4">Kashmir</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Contect">Contact</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="/Blog/Uploadblog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Map/UserMaps">Map</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Hotel/UserIndex">Hotel</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Flight/UserIndex">Flight</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="d-lg-block d-none nav-item">
+                    <ul class="nav navbar-nav navbar-right">
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li><a>Hello @User.Identity.Name</a></li>
+
+                            <li>@Html.ActionLink("Logout", "Logout", "Account", new { area = "" }, new { @class = "nav-link nav-item" })</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Login", "Login", "Account", new { area = "" }, new { @class = "nav-link nav-item" })</li>
+                        }
+
+                    </ul>
+                </div>
+
+            </nav>
+        </div>
+    </header>
+    <br />
+    @RenderBody()
+</body>
+</html>

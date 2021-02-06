@@ -1,0 +1,241 @@
+﻿@model IEnumerable<ProjectDatabaseLib.Package>
+
+@{
+    ViewBag.Title = "Packages";
+    Layout = "~/Views/Shared/_Packages.cshtml";
+}
+
+
+<section id="pack" class="packages">
+    <div class="container">
+        <div class="gallary-header text-center">
+        <br />
+        <br />
+            <h2>
+                Special Packages
+            </h2>
+            <p>
+                Come and Enjoy your Holidays !!!!
+            </p>
+        </div><!--/.gallery-header-->
+        <div class="packages-content">
+            <br />
+            <br />
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                <div class="col-md-4 col-sm-6">
+                    <div class="single-package-item">
+                        <div class="single-package-item-txt">
+                            <img src="@Url.Content(item.Image)" alt="package-place" style="width:400px;height:200px">
+                            <h3>@Html.DisplayFor(modelItem => item.PlaceName) <span class="pull-right">@Html.DisplayFor(modelItem => item.Price)</span></h3>
+                            <div class="packages-para">
+                                <p>
+                                    <span>
+                                        <i class="fa fa-angle-right"></i> @Html.DisplayFor(modelItem => item.NoOfDays) Days @Html.DisplayFor(modelItem => item.NoOfNights) Nights
+                                    </span>
+                                    <i class="fa fa-angle-right"></i>  5 star accomodation
+                                </p>
+                                <p>
+                                    <span>
+                                        <i class="fa fa-angle-right"></i>  transportation
+                                    </span>
+                                    <i class="fa fa-angle-right"></i>  food facilities
+                                </p>
+                            </div><!--/.packages-para-->
+                            <div class="packages-review">
+                                <p>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <span>2544 review</span>
+                                </p>
+                            </div><!--/.packages-review-->
+                            <div class="about-btn">
+                                @*<a data-fancybox class="about-view packages-btn">
+                        @Html.ActionLink("Book Now", "Booking", new { id = item.PackageId })
+                    </a>*@
+                                <button class="about-view packages-btn" style="align-items:center" type="submit">@Html.ActionLink("Book Now", "Booking", new { id = item.PackageId })</button>
+                            </div><!--/.about-btn-->
+                        </div><!--/.single-package-item-txt-->
+                    </div><!--/.single-package-item-->
+                    <br />
+                    <br />
+
+                </div>
+                }
+
+
+                <!--<div class="col-md-4 col-sm-6">
+        <div class="single-package-item">
+            <div class="single-package-item-txt">
+                <img src="~/Content/assets/images/1571999040_kerala.jpg" alt="package-place">
+                <h3>Kerla <span class="pull-right"></span></h3>
+                <div class="packages-para">
+                    <p>
+                        <span>
+                            <i class="fa fa-angle-right"></i> 5 daays 6 nights
+                        </span>
+                        <i class="fa fa-angle-right"></i>  5 star accomodation
+                    </p>
+                    <p>
+                        <span>
+                            <i class="fa fa-angle-right"></i>  transportation
+                        </span>
+                        <i class="fa fa-angle-right"></i>  food facilities
+                    </p>
+                </div>-->
+                <!--/.packages-para-->
+                <!--<div class="packages-review">
+            <p>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <span>2544 review</span>
+            </p>
+        </div>-->
+                <!--/.packages-review-->
+                <!--<div class="about-btn">
+            <a href="/Home/Booking" data-fancybox class="about-view packages-btn">
+                book now
+            </a>
+        </div>-->
+                <!--/.about-btn-->
+                <!--</div>--><!--/.single-package-item-txt-->
+                <!--</div>--><!--/.single-package-item-->
+                <!--</div>--><!--/.col-->
+                <!--<div class="col-md-4 col-sm-6">
+        <div class="single-package-item">
+            <div class="single-package-item-txt">
+                <img src="~/Content/assets/images/213333495goa2.png" alt="package-place">
+                <h3>Goa <span class="pull-right"></span></h3>
+                <div class="packages-para">
+                    <p>
+                        <span>
+                            <i class="fa fa-angle-right"></i> 5 daays 6 nights
+                        </span>
+                        <i class="fa fa-angle-right"></i>  5 star accomodation
+                    </p>
+                    <p>
+                        <span>
+                            <i class="fa fa-angle-right"></i>  transportation
+                        </span>
+                        <i class="fa fa-angle-right"></i>  food facilities
+                    </p>
+                </div>-->
+                <!--/.packages-para-->
+                <!--<div class="packages-review">
+            <p>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <span>2544 review</span>
+            </p>
+        </div>-->
+                <!--/.packages-review-->
+                <!--<div class="about-btn">
+            <a href="/Home/Booking" data-fancybox class="about-view packages-btn">
+                book now
+            </a>
+        </div>-->
+                <!--/.about-btn-->
+                <!--</div>--><!--/.single-package-item-txt-->
+                <!--</div>--><!--/.single-package-item-->
+                <!--</div>--><!--/.col-->
+                <!--<div class="col-md-4 col-sm-6">
+        <div class="single-package-item">
+            <div class="single-package-item-txt">
+                <img src="~/Content/assets/images/211133001Jaipur.jpg" alt="package-place">
+                <h3>Rajasthan <span class="pull-right"></span></h3>
+                <div class="packages-para">
+                    <p>
+                        <span>
+                            <i class="fa fa-angle-right"></i> 5 daays 6 nights
+                        </span>
+                        <i class="fa fa-angle-right"></i>  5 star accomodation
+                    </p>
+                    <p>
+                        <span>
+                            <i class="fa fa-angle-right"></i>  transportation
+                        </span>
+                        <i class="fa fa-angle-right"></i>  food facilities
+                    </p>
+                </div>-->
+                <!--/.packages-para-->
+                <!--<div class="packages-review">
+            <p>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <span>2544 review</span>
+            </p>
+        </div>-->
+                <!--/.packages-review-->
+                <!--<div class="about-btn">
+            <a href="/Home/Booking" data-fancybox class="about-view packages-btn">
+                book now
+            </a>
+        </div>-->
+                <!--/.about-btn-->
+                <!--</div>--><!--/.single-package-item-txt-->
+                <!--</div>--><!--/.single-package-item-->
+                <!--</div>--><!--/.col-->
+                <!--<div class="col-md-4 col-sm-6">
+        <div class="single-package-item">
+            <div class="single-package-item-txt">
+                <img src="~/Content/assets/images/kashmir.jpg" alt="package-place">
+                <h3>Jammu & Kashmir <span class="pull-right"></span></h3>
+                <div class="packages-para">
+                    <p>
+                        <span>
+                            <i class="fa fa-angle-right"></i> 5 daays 6 nights
+                        </span>
+                        <i class="fa fa-angle-right"></i>  5 star accomodation
+                    </p>
+                    <p>
+                        <span>
+                            <i class="fa fa-angle-right"></i>  transportation
+                        </span>
+                        <i class="fa fa-angle-right"></i>  food facilities
+                    </p>
+                </div>-->
+                <!--/.packages-para-->
+                <!--<div class="packages-review">
+            <p>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <span>2544 review</span>
+            </p>
+        </div>-->
+                <!--/.packages-review-->
+                <!--<div class="about-btn">
+            <a href="/Home/Booking" data-fancybox class="about-view packages-btn">
+                book now
+            </a>
+        </div>-->
+                <!--/.about-btn-->
+                <!--</div>--><!--/.single-package-item-txt-->
+                <!--</div>--><!--/.single-package-item-->
+                <!--</div>--><!--/.col-->
+
+
+
+
+
+            </div><!--/.row-->
+        </div><!--/.packages-content-->
+    </div><!--/.container-->
+
+</section>
+

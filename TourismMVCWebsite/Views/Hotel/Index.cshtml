@@ -1,0 +1,237 @@
+﻿@model IEnumerable<ProjectDatabaseLib.Hotel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Title</title>
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script>
+        $.fn.stars = function () {
+            return $(this).each(function () {
+                // Get the value
+                var val = parseFloat($(this).html());
+                // Make sure that the value is in 0 - 5 range, multiply to get width
+                var size = Math.max(0, (Math.min(5, val))) * 16;
+                // Create stars holder
+                var $span = $('<span />').width(size);
+                // Replace the numerical value with stars
+                $(this).html($span);
+            });
+            $(function () {
+                $('span.stars').stars();
+            });
+        }
+    </script>
+</head>
+<body>
+    <br />
+    <br />
+    <div class="container">
+
+        <h2 style="color:indianred">Hotel</h2>
+        @using (Html.BeginForm())
+
+        {
+            @* <div style="position: absolute;
+                margin-top: 50px;
+                box-sizing:border-box;">
+                <p>Hotel Name : <input type="text" id="MyId" name="id" /></p>
+                <input style="" type="submit" value="search" />
+            </div>*@
+            <div class="input-group" style=" width: 90% !important; max-width: 500px; border-radius: 30px; background: #fff; margin: 3px; padding: 2px; margin-top:25px; ">
+                <input type="text" name="id" class="form-control" placeholder="Search Hotel Name" />
+                <div class="input-group-append">
+                    <button type="submit" class="input-group-text btn">Search</button>
+                </div>
+            </div>
+
+
+
+            foreach (var item in Model)
+            {
+
+                <div class="card mb-3" style="max-width: 700px; height:150%; margin:5px">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img style="margin:5px;" src="@Url.Content(item.hotelImage)" class="card-img" alt="HotelImage">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body" style="">
+                                <h5 class="card-title"
+                                    style=" font-size: xx-large; color: #2d5b6b; font-weight: bold; font-family: system-ui;">
+                                    @Html.DisplayFor(modelItem => item.HotelName)
+                                </h5>
+                                <p class="card-text"
+                                   style="font-size: x-large; color: #524A66; font-weight: 600;">
+                                    &#x20B9 @Html.DisplayFor(modelItem => item.Price)/Day
+                                </p>
+                                <p class="card-text"><span class="fa fa-star" style="font-size:larger; color:darkorange">@Html.DisplayFor(modelItem => item.Hoteltype)</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</body>
+</html>
+
+
+
+@*<div class="container" style="margin-top:50px">
+        <div class="row">
+            <div class="card" style="width: 50%; margin-left: 25%; margin-right: 25%;">
+                <img class="col-md-10" src="@Url.Content(item.hotelImage)" alt="Card image cap" style=" width: 100%;">
+                <div class="col-md-10" style="float:right">
+                    <h5> @Html.DisplayFor(modelItem => item.HotelName)</h5>
+                    <h5>Hotel Price:  @Html.DisplayFor(modelItem => item.Price) </h5>
+                    <h5>Hotel Type: @Html.DisplayFor(modelItem => item.Hoteltype) Star</h5>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>*@
+@*<head>
+        <style>
+            .featured {
+                padding: 10px 0;
+                width: 100%;
+                height: 30%;
+            }
+
+                .featured h1 {
+                    text-align: center;
+                    font-size: 50px;
+                    padding-bottom: 30px;
+                }
+
+            .feature-img img {
+                width: 100%;
+            }
+
+            .price {
+                width: 100px;
+                height: 30px;
+                background: #ff5722;
+                color: #fff;
+                font-weight: 600;
+                border-radius: 15px;
+                padding: 10px;
+                box-shadow: 0 0 10px 1px rgba(37,73,214,0.18);
+                position: absolute;
+                left: 20px;
+                bottom: -25px;
+            }
+
+            .feature-img {
+                position: relative;
+            }
+
+            .rating {
+                padding: 3px;
+                float: right;
+                background: #fff;
+                bottom: -1px;
+                right: 0;
+                position: absolute;
+            }
+
+            .featured .fa {
+                font-size: 15px;
+                color: #ff5722;
+            }
+
+            .feature-detail {
+                padding: 20px;
+                text-align: justify;
+            }
+
+                .feature-detail h4 {
+                    font-weight: 600;
+                    margin-top: 20px;
+                }
+
+                .feature-detail .fa {
+                    margin-right: 5px;
+                }
+
+            .feature-box {
+                box-shadow: 0 0 10px 1px rgba(37,73,214,0.18);
+                margin-bottom: 20px;
+            }
+
+        </style>
+    </head>
+    <section class="featured">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-img">
+                            <img src="@Url.Content(item.hotelImage)">
+                            <div class="price">
+                                <p>@Html.DisplayFor(modelItem => item.Price)</p>
+                            </div>
+                            <div class="rating">
+                                <p>@Html.DisplayFor(modelItem => item.Hoteltype) Star</p>
+                            </div>
+                        </div>
+                        <div class="feature-detail">
+                            <h4>@Html.DisplayFor(modelItem => item.HotelName)</h4>
+                        </div>
+                        <div>
+                            <span> <i class="fa fa-map-marker">@Html.DisplayFor(modelItem => item.HotelName)</i></span>
+                            <span> <i class="fa fa-sun-o"></i>5 Days</span>
+                            <span> <i class="fa fa-moon-o"></i>4 Nights</span>
+                        </div>
+                    </div>
+                </div>
+    </section>
+*@
+@*<section class="featured">
+        <h1>Featured Destination</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-box">
+                        <div class="feature-img">
+                            <img src="@Url.Content(item.hotelImage)">
+                            <div class="price">
+                                <p>@Html.DisplayFor(modelItem => item.Price)</p>
+                            </div>
+                            <div class="rating">
+                                <p>@Html.DisplayFor(modelItem => item.Hoteltype) Star</p>
+                            </div>
+                        </div>
+                        <div class="feature-detail">
+                            <h4>Greece</h4>
+                            <p>Vist the beautiful Greece at best price and reslish the grace and nature of this place. VISIT NOW!!</p>
+                        </div>
+                        <div>
+                            <span> <i class="fa fa-map-marker">Greece</i></span>
+                            <span> <i class="fa fa-sun-o"></i>5 Days</span>
+                            <span> <i class="fa fa-moon-o"></i>4 Nights</span>
+                        </div>
+                    </div>
+                </div>
+    </section>*@
+@*<div class="card mb-3" style="max-width: 540px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="..." class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>*@

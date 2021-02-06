@@ -1,0 +1,126 @@
+﻿@model IEnumerable<ProjectDatabaseLib.Hotel>
+
+@{
+    ViewBag.Title = "Hotels";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<head>
+    <style>
+        #addnew {
+            width: 12%;
+            margin: 10px;
+            padding: 7px;
+            color: ghostwhite;
+            font-family: system-ui;
+            font-weight: 600;
+            font-size: larger;
+            background: #cfdac8;
+            border: #7e8a97;
+            border-radius: 7px;
+            text-align: center
+        }
+        #Editbt {
+            height: 32px;
+            width: 20%;
+            text-align: center;
+            padding: 2px;
+            font-size: large;
+            font-weight: 600;
+            background: #cfdac8;
+        }
+        #Deletebt {
+            height: 32px;
+            width: 20%;
+            text-align: center;
+            padding: 2px;
+            font-size: large;
+            font-weight: 600;
+            background: #7c9473;
+            border: #7c9473;
+        }
+    </style>
+</head>
+<div class="container">
+
+
+    <p id="addnew">
+        @Html.ActionLink("Create Hotel", "NewHotel", "Admin")
+    </p>
+    @*@using (Html.BeginForm())
+
+        {<div style="        position: absolute;
+                margin-top: 50px;
+
+                box-sizing:border-box;
+
+        ">
+                <p>Hotel Name : <input type="text" id="MyId" name="id" /></p>
+                <input style="" type="submit" value="search" />
+            </div>
+            foreach (var item in Model)
+            {
+
+                <div class="container" style="margin-top:50px">
+                    <div class="row"></div>
+                    <div class="card" style="width: 50%; margin-left: 25%; margin-right: 25%;">
+                        <img class="col-sm" src="@Url.Content(item.hotelImage)" alt="Card image cap" style=" width: 15%; height: 15%;">
+                        <div class=" col-sm">
+                            <h5> @Html.DisplayFor(modelItem => item.HotelName)</h5>
+                            <h5>Hotel Price:  @Html.DisplayFor(modelItem => item.Price) </h5>
+                            <h5>Hotel Type: @Html.DisplayFor(modelItem => item.Hoteltype) Star</h5>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <button class="btn btn-light" type="submit">@Html.ActionLink("Edit", "HotelUpdate", new { id = item.Id })</button>
+
+                            <button class="btn btn-sm btn-dark text-light" type="submit">@Html.ActionLink("Delete", "HotelDelete", new { id = item.Id }, new { onclick = "return confirm('Are sure wants to delete?');" })</button>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        }*@
+
+    @using (Html.BeginForm())
+
+    {
+
+        <div class="input-group" style=" width: 90% !important; max-width: 500px; border-radius: 30px; background: #fff; margin: 3px; padding: 2px; margin-top:25px; ">
+            <input type="text" name="id" class="form-control" placeholder="Search Hotel Name" />
+            <div class="input-group-append">
+                <button type="submit" class="input-group-text btn">Search</button>
+            </div>
+        </div>
+
+
+
+        foreach (var item in Model)
+        {
+
+            <div class="card mb-3" style="max-width: 700px; height:150px; margin:2px">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img style=" margin: 5px;" src="@Url.Content(item.hotelImage)" class="card-img" alt="HotelImage">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body" style="">
+                            <h5 class="card-title"
+                                style=" font-size: x-large; color: #2d5b6b; font-weight: bold; font-family: system-ui;">
+                                @Html.DisplayFor(modelItem => item.HotelName)
+                            </h5>
+                            <p class="card-text"
+                               style="font-size: larger; color: #524A66; font-weight: 600;">
+                                &#x20B9 @Html.DisplayFor(modelItem => item.Price)
+                            </p>
+                            <p class="card-text"><span class="fa fa-star">@Html.DisplayFor(modelItem => item.Hoteltype)</span></p>
+                            <button class="btn btn-light card-text" id="Editbt" type="submit">@Html.ActionLink("Edit", "HotelUpdate", new { id = item.Id })</button>
+
+                            <button class="btn btn-sm btn-dark card-text" id="Deletebt" type="submit">@Html.ActionLink("Delete", "HotelDelete", new { id = item.Id }, new { onclick = "return confirm('Are sure wants to delete?');" })</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

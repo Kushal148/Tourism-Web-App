@@ -1,0 +1,166 @@
+﻿@model ProjectDatabaseLib.Package
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_Booking.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        debugger
+        //function will be called on button click having id btnsave
+        $("#btnSave").click(function () {
+            $.ajax(
+                {
+                    type: "POST", //HTTP POST Method
+                    url: "User/BookPackage", // Controller/View
+                    data: { //Passing data
+                        FirstName: $("#first_name").val(),
+                        LastName: $("#last_name").val(),//Reading text box values using Jquery
+                        City: $("#city").val(),
+                        Address: $("#street_address").val(),
+                        PostCode: $("#postcode").val(),
+                        PhoneNumber: $("#phone_number").val(),
+                        EmailId: $("#email_address").val(),
+                        PackageId: $("packageid").val(),
+                        Adults: $("lbladults").val(),
+                        Total: $("lbltotal").val()
+                    }
+
+                });
+
+        });
+    });
+
+</script>
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container">
+            <h2 class="title">Booking </h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="#url">Pacakges</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Booking </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ****** Checkout Area Start ****** -->
+<div class="checkout_area section_padding_100">
+    <div class="container">
+        <br />
+        <br />
+        <div class="row">
+
+            <div class="col-12 col-md-6">
+                <div class="checkout_details_area mt-50 clearfix">
+
+                    <div class="cart-page-heading">
+                        <h5>Billing Form</h5>
+                        
+                    </div>
+
+                    <form action="#" method="post">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="first_name">First Name <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="first_name" value="" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="last_name">Last Name <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="last_name" value="" required>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="street_address">Address <span style="color:red">*</span></label>
+                                <input type="text" class="form-control mb-3" id="street_address" value="">
+                                <input type="text" class="form-control" id="street_address2" value="">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="postcode">Postcode <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="postcode" value="">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="city">Town/City <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="city" value="">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="phone_number">Phone No <span style="color:red">*</span></label>
+                                <input type="number" class="form-control" id="phone_number" min="0" value="">
+                            </div>
+                            <div class="col-12 mb-4">
+                                <label for="email_address">Email Address <span style="color:red">*</span></label>
+                                <input type="email" class="form-control" id="email_address" value="">
+                            </div>
+                            <div class="col-12 mb-4">
+                                <label for="email_address">PackageId <span style="color:red">*</span></label>
+                                <input type="email" class="form-control" id="packageid" readonly ="@Html.DisplayFor(model => model.PackageId)">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+                <div class="order-details-confirmation">
+
+                    <div class="cart-page-heading">
+                        <h5 style="text-align:center">Your Booking</h5>
+                        <p style="text-align:center">The Details</p>
+                    </div>
+                    
+                    <ul class="order-details-form mb-4">
+                        @*<li><span>Product</span> <span>Total</span></li>*@
+                        <li><span>Package Amount</span> <span><input type="text" readonly class="form-control" id="lblprice" value="@Html.DisplayFor(model => model.Price)" onchange="Sum()" /></span></li>
+                        <li><span>Adults</span> <span><input type="text" class="form-control" id="lbladults" value="@Html.DisplayFor(model => model.NoOfPerson)" onchange="Sum()" /></span></li>
+                        <li><span>Total</span> <span><input type="text" class="form-control"readonly id="lbltotal" value="@Html.DisplayFor(model => model.Price)" /></span></li>
+                    </ul>
+
+
+                    <div id="accordion" role="tablist" class="mb-4">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne">
+                                <h6 class="mb-0">
+                                    <a data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"><i class="fa fa-circle-o mr-3"></i>Paypal</a>
+                                </h6>
+                            </div>
+
+                        </div>
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingTwo">
+                                <h6 class="mb-0">
+                                    <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="fa fa-circle-o mr-3"></i>cash on delievery</a>
+                                </h6>
+                            </div>
+                            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingThree">
+                                <h6 class="mb-0">
+                                    <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i class="fa fa-circle-o mr-3"></i>credit card</a>
+                                </h6>
+                            </div>
+                            <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingFour">
+                                <h6 class="mb-0">
+                                    <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour"><i class="fa fa-circle-o mr-3"></i>direct bank transfer</a>
+                                </h6>
+                            </div>
+                            <div id="collapseFour" class="collapse show" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<a href="#" class="btn karl-checkout-btn">Place Order</a>*@
+                    <button class="btn karl-checkout-btn" style="align-items:center" id="btnSave" type="submit">Book your Tour</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- ****** Checkout Area End ****** -->

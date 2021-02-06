@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ProjectDatabaseLib.Package>
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+
+}
+
+
+
+<section class="w3l-grids-3 py-5">
+    <div class="container py-md-5">
+        <div class="title-content text-left mb-lg-5 mb-4">
+            <h6 class="sub-title">Visit</h6>
+            <h3 class="hny-title">Popular Destinations</h3>
+        </div>
+
+        <div class="row bottom-ab-grids">
+            <!--/row-grids-->
+            @foreach (var item in Model)
+            {
+
+                <div class="col-lg-6 subject-card mt-lg-0 mt-4">
+                    <div class="subject-card-header p-4">
+                        <a href="#" class="card_title p-lg-4d-block">
+                            <div class="row align-items-center">
+                                <div class="col-sm-5 subject-img">
+                                    <img src="@Url.Content(item.Image)" class="img-fluid" alt="">
+                                </div>
+                                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                                    <h4>@Html.DisplayFor(modelItem => item.PlaceName)</h4>
+                                    <p>@Html.DisplayFor(modelItem => item.NoOfDays) Days, @Html.DisplayFor(modelItem => item.NoOfNights) Nights</p>
+                                    <div class="dst-btm">
+                                        <h6 class=""> Start From </h6>
+                                        <span>&#8377;@Html.DisplayFor(modelItem => item.Price)</span>
+                                    </div>
+                                    <p class="sub-para">@Html.DisplayFor(modelItem => item.NoOfPerson) person on twin sharing</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+            }
+
+            <!--//row-grids-->
+        </div>
+    </div>
+</section>

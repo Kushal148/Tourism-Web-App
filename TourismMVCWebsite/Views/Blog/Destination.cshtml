@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ProjectDatabaseLib.BlogSpace1>
+@{
+    ViewBag.Title = "Destination";
+}
+
+<style>
+    body {
+        background-color: aliceblue;
+    }
+
+    #buttons li a:hover {
+        text-decoration: none;
+        color: #000000;
+        background-color: #33B5E5;
+    }
+</style>
+<h2 style="font-family:'Times New Roman', Times, serif; color:blue; font-size:30px;text-align:center;"><b>Destination Articles</b></h2>
+
+
+<table class="table">
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                <b style="color:firebrick; font-size:large; text-decoration:underline;">@Html.DisplayFor(modelItem => item.Title)</b>
+                <p style="font-size:18px; text-align:justify;">@Html.DisplayFor(modelItem => item.Outline)</p>
+
+            </td>
+        </tr>
+        <!--<tr>
+            <td>-->
+        @*<td><a href="~/Blog/@item.Description">Read Complete Article</a></td>*@
+        @*<a href="~/Blog/BlogDesc.cshtml">Read Complete Article</a>*@
+
+
+
+
+        @*Read: @Html.DisplayFor(modelItem => item.Description)*@
+        <!--</td>
+        </tr>-->
+
+        <tr>
+            <td>
+                <b>Category:</b> <a href="~/Blog/@item.Category"><b>@Html.DisplayFor(modelItem => item.Category)</b></a>
+            </td>
+          
+
+        </tr>
+    }
+
+
+</table>
+    <ul id="buttons" style="list-style-type:none; margin:0; padding:0;text-align:center; background-color: #000000; line-height:60px;">
+        <li><b>@Html.ActionLink("Read Complete Blog Articles", "BlogDesc", "Blog")</b></li>
+    </ul>

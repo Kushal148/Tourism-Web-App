@@ -1,0 +1,98 @@
+﻿@model IEnumerable<ProjectDatabaseLib.Package>
+
+@{
+    ViewBag.Title = "Packages";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    @*@using (Html.BeginForm("GetPackagename", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+    {
+        <div style="position: relative;
+        margin-top: 40px;
+        margin-left:20px;
+
+        box-sizing:border-box;">
+
+            <p>
+                <b>Package Name : </b><input style="border-radius:15px;" type="text" id="PackageId" name="PackageId" />
+                <input style="        border-radius: 15px;
+        background-image: linear-gradient(#00ff7e, #1f3d90);
+        border: 0 !important;
+        color: #fff !important;
+        padding: 5px 20px !important;" type="submit" value="search" />
+            </p>
+
+
+
+        </div>
+    }*@
+        <p>
+            @Html.ActionLink("Create New", "CreatePakages", "Admin", null, new { @class = "btn btn-info btn-large" })
+        </p>
+        <h2 style="text-align:center">List Of Packages</h2>
+        <br />
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PlaceName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NoOfDays)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NoOfNights)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NoOfPerson)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Image)
+                </th>
+                <th style="width: 30%;">
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>Options</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlaceName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoOfDays)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoOfNights)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NoOfPerson)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        <img src="@Url.Content(item.Image)" alt="Not Found" width="80" height="80" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+
+                        <button class="btn btn-sm btn-success" type="submit">@Html.ActionLink("Edit", "EditPakages", new { id = item.PackageId })</button>
+
+                        <button class="btn btn-sm btn-danger" type="submit">@Html.ActionLink("Delete", "DeletePakages", new { id = item.PackageId }, new { onclick = "return confirm('Are sure wants to delete?');" })</button>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+
+    </div>
